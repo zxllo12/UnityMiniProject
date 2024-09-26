@@ -219,6 +219,8 @@ GameObject:
   - component: {fileID: 875184373}
   - component: {fileID: 875184377}
   - component: {fileID: 875184378}
+  - component: {fileID: 875184380}
+  - component: {fileID: 875184379}
   m_Layer: 0
   m_Name: Mario_Small_Idle
   m_TagString: Untagged
@@ -349,6 +351,45 @@ MonoBehaviour:
   jumpPower: 12
   maxFallSpeed: 100
   isGrounded: 0
+--- !u!95 &875184379
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875184372}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 702ff98f68041af43bbb4c56ebaaa8bb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &875184380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875184372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1009981b9d669ba48aa37a6a6de838ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  player: {fileID: 0}
+  idle: {fileID: 0}
+  jump: {fileID: 0}
+  slide: {fileID: 0}
+  run: {fileID: 0}
 --- !u!1 &1182649662
 GameObject:
   m_ObjectHideFlags: 0

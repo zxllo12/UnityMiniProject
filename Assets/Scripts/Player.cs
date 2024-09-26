@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rigid;
     [SerializeField] SpriteRenderer render;
+    [SerializeField] Animator animator;
 
     [SerializeField] float movePower;
     [SerializeField] float maxMoveSpeed;
@@ -16,30 +17,25 @@ public class Player : MonoBehaviour
 
     private float x;
 
+    private static int idleHash = Animator.StringToHash("small_mario_idle");
+    private static int runHash = Animator.StringToHash("small_mario_run");
+    private static int jumpHash = Animator.StringToHash("small_mario_jump");
+
     private void Update()
     {
         x = Input.GetAxisRaw("Horizontal");
 
-        Idle();
-
         Jump();
 
         Run();
+
+        AnimatorPlay();
     }
 
     private void FixedUpdate()
     {
         Move();
     }
-
-    private void Idle()
-    {
-        if (rigid.velocity.sqrMagnitude < 0.01f)
-        {
-            isGrounded = true;
-        }
-    }
-
     private void Move()
     {
         rigid.AddForce(Vector2.right * x * movePower, ForceMode2D.Force);
@@ -101,6 +97,26 @@ public class Player : MonoBehaviour
         else
         {
             maxMoveSpeed = 5f;
+        }
+    }
+
+    private void AnimatorPlay()
+    {
+        if (rigid.velocity.y > 0.01f)
+        {
+            animator.Play(jumpHash);
+        }
+        else if (rigid.velocity.y < -0.01f)
+        {
+            animator.Play(jumpHash);
+        }
+        else if(rigid.velocity.sqrMagnitude < 0.01f)
+        {
+            animator.Play(idleHash);
+        }
+        else
+        {
+            animator.Play(runHash);
         }
     }
 }
