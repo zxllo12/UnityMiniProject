@@ -346,6 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigid: {fileID: 875184373}
   render: {fileID: 875184375}
+  animator: {fileID: 875184379}
   movePower: 30
   maxMoveSpeed: 5
   jumpPower: 12
