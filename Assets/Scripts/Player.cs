@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -24,7 +26,6 @@ public class Player : MonoBehaviour
     private static int jumpHash = Animator.StringToHash("small_mario_jump");
     private static int dieHash = Animator.StringToHash("small_mario_die");
 
-
     private void Update()
     {
         x = Input.GetAxisRaw("Horizontal");
@@ -34,6 +35,11 @@ public class Player : MonoBehaviour
         Run();
 
         AnimatorPlay();
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
     }
 
     private void FixedUpdate()

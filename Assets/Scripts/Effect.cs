@@ -25,11 +25,9 @@ public class Effect : MonoBehaviour
         switch (type)
         {
             case Type.Coin:
-                Debug.Log("Coin");
                 break;
 
             case Type.MagicMushroom:
-                Debug.Log("Mushroom");
                 break;
         }
 
