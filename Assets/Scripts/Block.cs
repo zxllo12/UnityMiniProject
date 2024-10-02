@@ -6,14 +6,14 @@ using static UnityEditor.Progress;
 
 public class Block : MonoBehaviour
 {
-    //public GameObject item;
-    //public Sprite emptyBlock;
+    public GameObject item;
+    public Sprite emptyBlock;
     public int maxHits = -1;
     private bool animating;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (!animating && maxHits != 0 && collision.gameObject.CompareTag("Player"))
         {
             if (collision.transform.DotTest(transform, Vector2.up))
             {
@@ -25,19 +25,19 @@ public class Block : MonoBehaviour
     private void Hit()
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.enabled = true; // show if hidden
+        spriteRenderer.enabled = true;
 
         maxHits--;
 
         if (maxHits == 0)
         {
-            //spriteRenderer.sprite = emptyBlock;
+            spriteRenderer.sprite = emptyBlock;
         }
 
-        //if (item != null)
-        //{
-        //    Instantiate(item, transform.position, Quaternion.identity);
-        //}
+        if (item != null)
+        {
+            Instantiate(item, transform.position, Quaternion.identity);
+        }
 
         StartCoroutine(Animate());
     }
