@@ -28,22 +28,10 @@ public class Effect : MonoBehaviour
         {
             case Type.Coin:
                 Debug.Log("Coin");
-                //GameManager.Instance.AddCoin();
-                break;
-
-            case Type.ExtraLife:
-                Debug.Log("Life");
-                //GameManager.Instance.AddLife();
                 break;
 
             case Type.MagicMushroom:
                 Debug.Log("Mushroom");
-                //player.Grow();
-                break;
-
-            case Type.Starpower:
-                Debug.Log("Star");
-                //player.Starpower();
                 break;
         }
 

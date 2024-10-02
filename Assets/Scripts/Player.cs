@@ -17,9 +17,13 @@ public class Player : MonoBehaviour
 
     private float x;
 
+    private bool life = true;
+
     private static int idleHash = Animator.StringToHash("small_mario_idle");
     private static int runHash = Animator.StringToHash("small_mario_run");
     private static int jumpHash = Animator.StringToHash("small_mario_jump");
+    private static int dieHash = Animator.StringToHash("small_mario_die");
+
 
     private void Update()
     {
@@ -102,7 +106,11 @@ public class Player : MonoBehaviour
 
     private void AnimatorPlay()
     {
-        if (rigid.velocity.y > 0.01f)
+        if (life == false)
+        {
+            animator.Play(dieHash);
+        }
+        else if (rigid.velocity.y > 0.01f)
         {
             animator.Play(jumpHash);
         }
@@ -119,4 +127,46 @@ public class Player : MonoBehaviour
             animator.Play(runHash);
         }
     }
+
+    public void Death()
+    {
+        life = false;
+
+        DisablePhysics();
+        StartCoroutine(Animate());
+    }
+    private void DisablePhysics()
+    {
+        Collider2D[] colliders = GetComponents<Collider2D>();
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            colliders[i].enabled = false;
+        }
+
+        if (TryGetComponent(out Rigidbody2D rigidbody))
+        {
+            rigidbody.isKinematic = true;
+        }
+    }
+
+    private IEnumerator Animate()
+    {
+        float elapsed = 0f;
+        float duration = 3f;
+
+        float jumpVelocity = 10f;
+        float gravity = -36f;
+
+        Vector3 velocity = Vector3.up * jumpVelocity;
+
+        while (elapsed < duration)
+        {
+            transform.position += velocity * Time.deltaTime;
+            velocity.y += gravity * Time.deltaTime;
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+    }
+
 }
