@@ -7,9 +7,7 @@ public class Effect : MonoBehaviour
     public enum Type
     {
         Coin,
-        ExtraLife,
-        MagicMushroom,
-        Starpower,
+        MagicMushroom
     }
 
     public Type type;

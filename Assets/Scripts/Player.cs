@@ -135,6 +135,7 @@ public class Player : MonoBehaviour
         DisablePhysics();
         StartCoroutine(Animate());
     }
+
     private void DisablePhysics()
     {
         Collider2D[] colliders = GetComponents<Collider2D>();

@@ -29,7 +29,6 @@ public class Enemy : MonoBehaviour
             else
             {
                 player.Death();
-                Debug.Log("die");
             }
         }
     }
@@ -39,11 +38,6 @@ public class Enemy : MonoBehaviour
         speed = 0f;
         life = true;
         Destroy(gameObject, 0.5f);
-    }
-
-    private void Hit()
-    {
-        Destroy(gameObject, 3f);
     }
 
     private void Awake()
