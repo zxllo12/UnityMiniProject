@@ -22,24 +22,21 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && collision.gameObject.TryGetComponent(out Player player))
         {
-            if (life == true)
-            {
-                Hit();
-            }
-            else if (collision.transform.DotTest(transform, Vector2.down))
+            if (collision.transform.DotTest(transform, Vector2.down))
             {
                 Flatten();
             }
             else
             {
-                //player.Hit();
+                player.Death();
+                Debug.Log("die");
             }
         }
     }
 
     private void Flatten()
     {
-        GetComponent<Collider2D>().enabled = false;
+        speed = 0f;
         life = true;
         Destroy(gameObject, 0.5f);
     }
